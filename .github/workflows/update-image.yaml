@@ -28,8 +28,8 @@ jobs:
         id: get_token
         uses: actions/create-github-app-token@v2
         with:
-          private-key: ${{ secrets.ELECTRICILIES_BOT_PRIVATE_KEY }}
-          app-id: ${{ vars.ELECTRICILIES_BOT_APP_ID }}
+          private-key: ${{ secrets.ORG_BOT_PRIVATE_KEY }}
+          app-id: ${{ vars.ORG_BOT_APP_ID }}
           owner: ${{ github.repository_owner }}
           repositories: infrastructure
       - name: Cache Docker images
