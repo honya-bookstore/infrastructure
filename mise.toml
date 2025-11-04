@@ -1,0 +1,7 @@
+[tools]
+age = "latest"
+flux2 = "latest"
+kubectx = "latest"
+kustomize = "latest"
+sops = "latest"
+terraform = "1.13.4"

@@ -1,0 +1,35 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master/job-batch-v1.json
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migration
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: migrate
+          image: ghcr.io/honya-bookstore/migrate:latest
+          args:
+            - migrate
+            - apply
+            - --env=dev
+            - --allow-dirty
+          env:
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: cnpg
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: cnpg
+                  key: password
+            - name: DB_HOST
+              value: cnpg
+            - name: DB_NAME
+              value: honyabookstore
+            - name: DB_PORT
+              value: "5432"

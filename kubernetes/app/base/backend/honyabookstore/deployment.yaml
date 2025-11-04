@@ -1,0 +1,66 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master-standalone-strict/deployment.json
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: &name honyabookstore
+  annotations:
+    reloader.stakater.com/auto: "true"
+spec:
+  template:
+    spec:
+      containers:
+        - name: *name
+          image: ghcr.io/honya-bookstore/backend:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_HOST
+              value: cnpg.postgres
+            - name: DB_DATABASE
+              value: *name
+            - name: DB_PORT
+              value: "5432"
+            - name: GIN_MODE
+              value: release
+            - name: REDIS_ADDRESS
+              value: redis:6379
+            - name: S3_ENDPOINT
+              value: http://minio.minio:80
+            - name: S3_REGION_NAME
+              value: us-east-1
+            - name: S3_BUCKET
+              value: honyabookstore
+            - name: KC_REALM
+              value: honyabookstore
+            - name: KC_CLIENT_ID
+              value: backend
+            - name: KC_BASE_PATH
+              value: http://keycloak.keycloak:8080
+          envFrom:
+            - secretRef:
+                name: honyabookstore-keycloak
+            - secretRef:
+                name: honyabookstore-postgres
+            - secretRef:
+                name: honyabookstore-minio
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            periodSeconds: 10
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: 10m
+              memory: 50Mi
+            limits:
+              cpu: 500m
+              memory: 200Mi
+  selector: {}

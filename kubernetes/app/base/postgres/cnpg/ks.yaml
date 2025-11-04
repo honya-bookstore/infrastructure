@@ -1,0 +1,20 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/kustomization-kustomize-v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: postgres-cnpg
+spec:
+  interval: 1h
+  retryInterval: 1m
+  timeout: 5m
+  wait: true
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: honyabookstore
+  path: kubernetes/app/base/postgres/cnpg/
+  decryption:
+    provider: sops
+    secretRef:
+      name: honyabookstore-sops-age

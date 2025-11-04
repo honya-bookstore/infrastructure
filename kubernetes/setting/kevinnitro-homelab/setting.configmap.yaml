@@ -1,0 +1,9 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master-standalone-strict/configmap.json
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: setting
+data:
+  TIMEZONE: Asia/Ho_Chi_Minh # this is not being used
+  LOCAL_DOMAIN: kev

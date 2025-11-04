@@ -1,0 +1,23 @@
+---
+# yaml-language-server: $schema=https://www.schemastore.org/kustomization.json
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: honyabookstore-dev-minio
+resources:
+  - ../../../base/minio/minio/
+  - ./api.httproute.yaml
+  - ./console.httproute.yaml
+patches:
+  - target:
+      group: minio.min.io
+      version: v2
+      kind: Tenant
+    patch: |- # language: yaml
+      - op: add
+        path: /spec/env
+        value: []
+      - op: add
+        path: /spec/env/-
+        value:
+          name: MINIO_BROWSER_REDIRECT_URL
+          value: https://minio-console-honyabookstore.${IDVN_DOMAIN}

@@ -1,0 +1,12 @@
+---
+# yaml-language-server: $schema=https://www.schemastore.org/kustomization.json
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: honyabookstore
+resources:
+  - ../base/
+  - ./infrastructure.ks.yaml
+  - ./namespace.yaml
+  - ./setting.ks.yaml
+patches:
+  - path: ./dev.app.ks.patch.yaml

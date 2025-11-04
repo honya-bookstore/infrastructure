@@ -1,0 +1,17 @@
+---
+creation_rules:
+  - path_regex: .*\.sops\.ya?ml
+    encrypted_regex: "^(data|stringData)$"
+    mac_only_encrypted: true
+    key_groups:
+      - age:
+          - age1wd52pjevau9p02g4e04h9nkpplyt4xq3la5xxe3arepjhxspl39qacr2vs
+  - path_regex: ^.*\.encrypted$
+    key_groups:
+      - age:
+          - age1wd52pjevau9p02g4e04h9nkpplyt4xq3la5xxe3arepjhxspl39qacr2vs
+stores:
+  yaml:
+    indent: 2
+  json:
+    indent: 2

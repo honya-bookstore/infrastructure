@@ -1,0 +1,10 @@
+---
+# yaml-language-server: $schema=https://www.schemastore.org/kustomization.json
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: honyabookstore-dev-postgres
+resources:
+  - ../../../base/postgres/migration/
+images:
+  - name: ghcr.io/honya-bookstore/migrate
+    digest: sha256:b5e507323f23880a42d7d61b97fcf064c579fdb4884fc8eba4818fbd62f4e395

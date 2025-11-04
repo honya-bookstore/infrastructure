@@ -1,0 +1,40 @@
+---
+# yaml-language-server: $schema=https://www.schemastore.org/kustomization.json
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ./backend/
+  - ./frontend/
+  - ./minio/
+  - ./postgres/
+patches:
+  - target:
+      group: kustomize.toolkit.fluxcd.io
+      version: v1
+      kind: Kustomization
+    patch: |- # language: yaml
+      - op: add
+        path: /metadata/namespace
+        value: honyabookstore
+  - target:
+      group: kustomize.toolkit.fluxcd.io
+      version: v1
+      kind: Kustomization
+      labelSelector: flux.kevinnitro/substitute notin (0)
+    patch: |- # language: yaml
+      - op: add
+        path: /spec/postBuild
+        value: {}
+      - op: add
+        path: /spec/postBuild/substituteFrom
+        value: []
+      - op: add
+        path: /spec/postBuild/substituteFrom/-
+        value:
+          kind: Secret
+          name: setting
+      - op: add
+        path: /spec/postBuild/substituteFrom/-
+        value:
+          kind: ConfigMap
+          name: setting

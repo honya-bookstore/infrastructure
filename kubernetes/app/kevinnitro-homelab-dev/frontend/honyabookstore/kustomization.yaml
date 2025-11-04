@@ -1,0 +1,14 @@
+---
+# yaml-language-server: $schema=https://www.schemastore.org/kustomization.json
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: honyabookstore-dev-frontend
+resources:
+  - ../../../base/frontend/honyabookstore/
+  - ./httproute.yaml
+patches:
+  - path: ./deployment.patch.yaml
+  - path: ./keycloak.patch.secret.sops.yaml
+images:
+  - name: ghcr.io/honya-bookstore/frontend
+    digest: sha256:8710fe8b12bac235b2a6232af18222b4e5ba14c7b9bc95dcdc923dacfedcffad

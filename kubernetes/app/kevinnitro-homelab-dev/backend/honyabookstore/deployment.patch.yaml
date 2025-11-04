@@ -1,0 +1,21 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/master-standalone-strict/deployment.json
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: &name honyabookstore
+spec:
+  template:
+    metadata:
+      labels:
+        alloy.kevinnitro/scrape: "1"
+    spec:
+      containers:
+        - name: *name
+          env:
+            - name: DB_HOST
+              value: cnpg.honyabookstore-dev-postgres
+            - name: KC_REALM
+              value: honyabookstore-dev
+            - name: S3_ENDPOINT
+              value: http://minio.honyabookstore-dev-minio:80
