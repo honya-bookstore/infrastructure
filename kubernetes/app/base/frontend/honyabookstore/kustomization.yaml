@@ -9,6 +9,6 @@ labels:
 resources:
   - ./deployment.yaml
   - ./honyabookstore.secret.sops.yaml
-  - ./horizontalpodautoscaler.yaml
+  # - ./horizontalpodautoscaler.yaml
   - ./keycloak.secret.sops.yaml
   - ./service.yaml

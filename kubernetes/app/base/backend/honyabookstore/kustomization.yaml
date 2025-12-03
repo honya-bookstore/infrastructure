@@ -13,6 +13,6 @@ resources:
   - ./minio.secret.sops.yaml
   - ./postgres.secret.sops.yaml
   - ./service.yaml
-  - ./servicemonitor.yaml
+  # - ./servicemonitor.yaml
 configurations:
   - ./kustomizeconfig.yaml
