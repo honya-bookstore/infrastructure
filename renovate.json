@@ -1,6 +1,4 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "local>honya-bookstore/renovate-config"
-  ]
+  "extends": ["local>eletricilies/renovate-config"]
 }
