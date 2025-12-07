@@ -17,7 +17,7 @@ spec:
   dependsOn:
     - name: postgres-migration
     - name: minio-minio
-    - name: backend-redis
+    # - name: backend-redis
   decryption:
     provider: sops
     secretRef:

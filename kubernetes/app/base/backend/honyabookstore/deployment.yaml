@@ -37,7 +37,11 @@ spec:
               value: backend
             - name: KC_BASE_PATH
               value: http://keycloak.com
+            - name: KC_HTTP_MANAGEMENT_PATH
+              value: http://keycloak.keycloak:9000
           envFrom:
+            - secretRef:
+                name: honyabookstore-honyabookstore
             - secretRef:
                 name: honyabookstore-keycloak
             - secretRef:

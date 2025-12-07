@@ -20,4 +20,4 @@ spec:
             - name: S3_ENDPOINT
               value: http://minio.honyabookstore-dev-minio:80
             - name: KC_BASE_PATH
-              value: http://keycloak.${IDVN_DOMAIN}
+              value: https://keycloak.${IDVN_DOMAIN}

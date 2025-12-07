@@ -7,12 +7,13 @@ labels:
       app.kubernetes.io/name: backend-honyabookstore
     includeSelectors: true
 resources:
+  # - ./servicemonitor.yaml
   - ./deployment.yaml
+  - ./honyabookstore.secret.sops.yaml
   - ./horizontalpodautoscaler.yaml
   - ./keycloak.secret.sops.yaml
   - ./minio.secret.sops.yaml
   - ./postgres.secret.sops.yaml
   - ./service.yaml
-  # - ./servicemonitor.yaml
 configurations:
   - ./kustomizeconfig.yaml
