@@ -17,16 +17,9 @@ resource "minio_ilm_policy" "honyabookstore_policy" {
   bucket = minio_s3_bucket.honyabookstore.bucket
 
   rule {
-    id         = "expire-temp-product-images"
+    id         = "expire-temp-media-images"
     status     = "Enabled"
-    filter     = "temp/products/images/"
-    expiration = "1d"
-  }
-
-  rule {
-    id         = "expire-temp-reviews"
-    status     = "Enabled"
-    filter     = "temp/reviews/images/"
+    filter     = "media/temp/"
     expiration = "1d"
   }
 }
