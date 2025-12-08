@@ -48,19 +48,19 @@ spec:
                 name: honyabookstore-postgres
             - secretRef:
                 name: honyabookstore-minio
-          readinessProbe:
-            httpGet:
-              path: /health/ready
-              port: 8080
-            periodSeconds: 5
-            timeoutSeconds: 3
-            failureThreshold: 10
-          livenessProbe:
-            httpGet:
-              path: /health/live
-              port: 8080
-            periodSeconds: 10
-            failureThreshold: 3
+          # readinessProbe:
+          #   httpGet:
+          #     path: /health/ready
+          #     port: 8080
+          #   periodSeconds: 5
+          #   timeoutSeconds: 3
+          #   failureThreshold: 10
+          # livenessProbe:
+          #   httpGet:
+          #     path: /health/live
+          #     port: 8080
+          #   periodSeconds: 10
+          #   failureThreshold: 3
           resources:
             requests:
               cpu: 10m
