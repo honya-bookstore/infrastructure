@@ -18,6 +18,6 @@ spec:
             - name: KC_REALM
               value: honyabookstore-dev
             - name: S3_ENDPOINT
-              value: http://minio.honyabookstore-dev-minio:80
+              value: https://minio-api-honyabookstore.${IDVN_DOMAIN}
             - name: KC_BASE_PATH
               value: https://keycloak.${IDVN_DOMAIN}
