@@ -6,7 +6,7 @@ metadata:
   name: &name cnpg
 spec:
   instances: 1
-  imageName: paradedb/paradedb:17-v0.18.11
+  imageName: paradedb/paradedb:17-v0.20.0
   postgresGID: 999
   postgresUID: 999
   env:
