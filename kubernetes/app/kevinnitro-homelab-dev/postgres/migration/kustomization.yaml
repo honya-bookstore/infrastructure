@@ -7,4 +7,4 @@ resources:
   - ../../../base/postgres/migration/
 images:
   - name: ghcr.io/honya-bookstore/migrate
-    digest: sha256:ac7c8641ae69fa2c4fc7b5464e07b26b223cc7b7c6dcad005f4c412118f11972
+    digest: sha256:4421c324361864d79e78251d04ea5fbe5a43558e8902b522c9195dc32307a36b
