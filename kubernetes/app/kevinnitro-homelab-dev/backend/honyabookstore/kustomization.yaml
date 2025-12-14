@@ -12,4 +12,4 @@ patches:
   - path: ./keycloak.secret.patch.sops.yaml
 images:
   - name: ghcr.io/honya-bookstore/backend
-    digest: sha256:046840ff0de66330cd0b7618beda7ff96d327ec24ac7ad1d2fed26b728a2d2df
+    digest: sha256:857b599a6744ac4b7b0ef77147c7521ff9686c4fd43a370b445401ea66309b1e
