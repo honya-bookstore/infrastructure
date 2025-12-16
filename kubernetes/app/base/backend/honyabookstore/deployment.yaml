@@ -39,6 +39,8 @@ spec:
               value: http://keycloak.com
             - name: KC_HTTP_MANAGEMENT_PATH
               value: http://keycloak.keycloak:9000
+            - name: VNP_URL
+              value: https://sandbox.vnpayment.vn/paymentv2/vpcpay.html
           envFrom:
             - secretRef:
                 name: honyabookstore-honyabookstore
